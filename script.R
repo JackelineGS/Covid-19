@@ -15,10 +15,10 @@ ggplot(mapping = aes(x = epi_week, y = log(AMAZONAS), colour = ESTADO)) +
   geom_line() +
   geom_point() +
   theme_minimal() +
-  labs(x = "Year",
-       y = "GDP per capita",
-       title = "GDP per capita on Five Continents", 
-       subtitle = "Individual countries shown in gray, trend in blue.")
+  labs(x = "Semana Epidemiológica",
+       y = "",
+       title = "Cantidad de fallecidos versus vacunados", 
+       subtitle = "Amazonas")
 
 
 
