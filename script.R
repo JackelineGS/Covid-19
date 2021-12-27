@@ -24,8 +24,8 @@ ggplot(mapping = aes(x = epi_week,
   labs(x = "",
        y = "",
        title = "AMAZONAS", 
-       subtitle = "") + 
-  theme(legend.title = element_blank())
+       subtitle = "(r= -.21; p = .04)") + 
+  theme(legend.title = element_blank(), legend.position = "left")
 
 #ANCASH
 
@@ -39,8 +39,8 @@ ANC <- BD %>%
   labs(x = "",
        y = "",
        title = "ANCASH", 
-       subtitle = "") + 
-  theme(legend.title = element_blank())
+       subtitle = "(r= -.32; p < .01)") + 
+  theme(legend.position = "none")
 
 #APURIMAC
 
@@ -54,8 +54,8 @@ APU <- BD %>%
   labs(x = "",
        y = "",
        title = "APURIMAC", 
-       subtitle = "") + 
-  theme(legend.title = element_blank())
+       subtitle = "(r = -.09; p = .37)") + 
+  theme(legend.position = "none")
 
 #AREQUIPA
 
@@ -69,8 +69,8 @@ ARE <- BD %>%
   labs(x = "",
        y = "",
        title = "AREQUIPA", 
-       subtitle = "") + 
-  theme(legend.title = element_blank())
+       subtitle = "(r = -.15; p = .12)") + 
+  theme(legend.position = "none")
 
 #AYACUCHO
 
@@ -84,8 +84,8 @@ AYA <- BD %>%
   labs(x = "",
        y = "",
        title = "AYACUCHO", 
-       subtitle = "") + 
-  theme(legend.title = element_blank())
+       subtitle = "(r= -.12; p = .23)") + 
+  theme(legend.position = "none")
 
 #CAJAMARCA
 
@@ -99,8 +99,8 @@ CAJ <- BD %>%
   labs(x = "",
        y = "",
        title = "CAJAMARCA", 
-       subtitle = "") + 
-  theme(legend.title = element_blank())
+       subtitle = "(r = -.20; p = .04)") + 
+  theme(legend.position = "none")
 
 #CALLAO 
 
@@ -114,8 +114,8 @@ CAL <- BD %>%
   labs(x = "",
        y = "",
        title = "CALLAO", 
-       subtitle = "") + 
-  theme(legend.title = element_blank())
+       subtitle = "(r = -.46; p < .01)") + 
+  theme(legend.position = "none")
 
 
 #CUSCO 
@@ -130,8 +130,8 @@ CUS <- BD %>%
   labs(x = "",
        y = "",
        title = "CUSCO", 
-       subtitle = "") + 
-  theme(legend.title = element_blank())
+       subtitle = "(r = .01; p = .96)") + 
+  theme(legend.position = "none")
 
 #HUANCAVELICA
 
@@ -145,8 +145,8 @@ HUA <- BD %>%
   labs(x = "",
        y = "",
        title = "HUANCAVELICA", 
-       subtitle = "") + 
-  theme(legend.title = element_blank())
+       subtitle = "(r = -.07 ; p = .44)") + 
+  theme(legend.position = "none")
 
 
 #HUANUCO
@@ -161,8 +161,8 @@ HUAN <- BD %>%
   labs(x = "",
        y = "",
        title = "HUANUCO", 
-       subtitle = "") + 
-  theme(legend.title = element_blank())
+       subtitle = " (r = -.34; p < .01 )") + 
+  theme(legend.position = "none")
 
 
 #ICA
@@ -177,8 +177,8 @@ ICA <- BD %>%
   labs(x = "",
        y = "",
        title = "ICA", 
-       subtitle = "") + 
-  theme(legend.title = element_blank())
+       subtitle = "(r = -.34 ; p < .01)") + 
+  theme(legend.position = "none")
 
 
 #JUNIN
@@ -193,8 +193,8 @@ JUN <- BD %>%
   labs(x = "",
        y = "",
        title = "JUNIN", 
-       subtitle = "") + 
-  theme(legend.title = element_blank())
+       subtitle = "(r = -.20; p = .04)") + 
+  theme(legend.position = "none")
 
 
 #LALIBERTAD
@@ -209,8 +209,8 @@ LAL <- BD %>%
   labs(x = "",
        y = "",
        title = "LA LIBERTAD", 
-       subtitle = "") + 
-  theme(legend.title = element_blank())
+       subtitle = "(r = -.31; p < .01)") + 
+  theme(legend.position = "none")
 
 #LAMBAYEQUE
 
@@ -224,8 +224,8 @@ LAM <- BD %>%
   labs(x = "",
        y = "",
        title = "LAMBAYEQUE", 
-       subtitle = "") + 
-  theme(legend.title = element_blank())
+       subtitle = "(r = -.44; p < .01)") + 
+  theme(legend.position = "none")
 
 
 #LIMA
@@ -240,8 +240,8 @@ LIM <- BD %>%
   labs(x = "",
        y = "",
        title = "LIMA", 
-       subtitle = "") + 
-  theme(legend.title = element_blank())
+       subtitle = "(r = -.37; p < .01)") + 
+  theme(legend.position = "none")
 
 
 #LORETO
@@ -256,8 +256,8 @@ LOR <- BD %>%
   labs(x = "",
        y = "",
        title = "LORETO", 
-       subtitle = "") + 
-  theme(legend.title = element_blank())
+       subtitle = "(r = -.41; p < .01)") + 
+  theme(legend.position = "none")
 
 
 #MADREDEDIOS
@@ -272,8 +272,8 @@ MAD <- BD %>%
   labs(x = "",
        y = "",
        title = "MADRE DE DIOS", 
-       subtitle = "") + 
-  theme(legend.title = element_blank())
+       subtitle = "(r = -.30; p < .01)") + 
+  theme(legend.position = "none")
 
 
 #MOQUEGUA
@@ -288,8 +288,8 @@ MOQ <- BD %>%
   labs(x = "",
        y = "",
        title = "MOQUEGUA", 
-       subtitle = "") + 
-  theme(legend.title = element_blank())
+       subtitle = "(r = -.21; p = .03)") + 
+  theme(legend.position = "none")
 
 
 #PASCO
@@ -304,8 +304,8 @@ PAS <- BD %>%
   labs(x = "",
        y = "",
        title = "PASCO", 
-       subtitle = "") + 
-  theme(legend.title = element_blank())
+       subtitle = "(r = -.19; p = .06)") + 
+  theme(legend.position = "none")
 
 
 #PIURA
@@ -320,8 +320,8 @@ PIU <- BD %>%
   labs(x = "",
        y = "",
        title = "PIURA", 
-       subtitle = "") + 
-  theme(legend.title = element_blank())
+       subtitle = "(r = -.40; p < .01)") + 
+  theme(legend.position = "none")
 
 
 #PUNO
@@ -336,8 +336,8 @@ PUN <- BD %>%
   labs(x = "",
        y = "",
        title = "PUNO", 
-       subtitle = "") + 
-  theme(legend.title = element_blank())
+       subtitle = "(r = .03; p = .71)") + 
+  theme(legend.position = "none")
 
 
 #SANMARTIN
@@ -352,8 +352,8 @@ SAN <- BD %>%
   labs(x = "",
        y = "",
        title = "SAN MARTIN", 
-       subtitle = "") + 
-  theme(legend.title = element_blank())
+       subtitle = "(r = -.23; p = .02)") + 
+  theme(legend.position = "none")
 
 
 #TACNA
@@ -368,8 +368,8 @@ TAC <- BD %>%
   labs(x = "",
        y = "",
        title = "TACNA", 
-       subtitle = "") + 
-  theme(legend.title = element_blank())
+       subtitle = "(r = -.12; p = .23)") + 
+  theme(legend.position = "none")
 
 
 #TUMBES
@@ -384,8 +384,8 @@ TUM <- BD %>%
   labs(x = "",
        y = "",
        title = "TUMBES", 
-       subtitle = "") + 
-  theme(legend.title = element_blank())
+       subtitle = "(r = -.36;p < .01)") + 
+  theme(legend.position = "none")
 
 
 #UCAYALI
@@ -400,15 +400,15 @@ UCA <- BD %>%
   labs(x = "",
        y = "",
        title = "UCAYALI", 
-       subtitle = "") + 
-  theme(legend.title = element_blank())
+       subtitle = "(r = -.43; p < .01)") + 
+  theme(legend.position = "none")
 
 
 
 ######################################################
 ################### CORRELACION ######################
 
-BD2 <- read_csv("departamentos.csv")
+BD2 <- read_csv("DP1_vacunados_y_fallecidos_x_semanaEpi.csv")
 names(BD2)
 
 library(MVN)          # Análisis de normalidad multivariada
@@ -577,5 +577,29 @@ cor.test(BD2$TUMBES_fal,
 cor.test(BD2$UCAYALI_fal, 
          BD2$UCAYALI_vac,
          method = "spearman")
+
+
+######################################################
+################ UNIR LOS GRAFICOS ###################
+
+library(patchwork)
+
+correlacion <- AMA + ANC + APU + ARE + AYA + CAJ + 
+               CAL + CUS + HUA + HUAN + ICA + JUN + 
+               LAL + LAM + LIM + LOR + MAD + MOQ +
+               PAS + PIU + PUN + SAN + TAC + TUM + 
+               UCA
+
+ggsave(filename = "regiones.png",
+       plot = correlacion,
+       height = 9,
+       width = 12,
+       scale = 1.5,
+       dpi = 300)
+
+
+
+
+
 
 
