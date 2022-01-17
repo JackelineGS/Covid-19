@@ -6,12 +6,9 @@ library(pacman)
 p_load(tidyverse, psych, epiR, scales, 
        lubridate, patchwork, openxlsx)
 
+data <- read.csv("DP1_covid19-peru_x_semanaEpi.csv")
+openxlsx::write.xlsx(data, file = "data.xlsx")
 
-base <- read_csv("fallecidos_departamentos_semanasEpi.csv")
-GDB <- read_csv("vacunados_x_departamento_x_semanaEpi_11.csv")
-vac <- read.csv("vac_fal_x_departamento.csv")
-
-names(BASE)
 
 
 #Categorización por macroregiones

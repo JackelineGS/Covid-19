@@ -1,53 +1,69 @@
 
 library(tidyverse)
 library(gapminder)
-
-fv_bd <- read_csv("Base_departamentos.csv")
-openxlsx::write.xlsx(fv_bd, file = "Base_departamentos.xlsx")
-
 library(readxl)
-BD <- read_excel("Base_departamentos.xlsx")
-View(BD)
 
-#######################################################
-################ GRÁFICO POR REGIONES #################
+BD <- read_excel("data.xlsx")
+names(BD)
+
+########################################################################
+###### GRÁFICO DE FALLECIDOS, VACUNADOS Y CASOS POR REGION #############
+########################################################################
+
+BD %>% 
+  ggplot(mapping = aes(x = epi_week, 
+                       y = log(total), 
+                       colour = ESTADO)) + 
+  geom_line() +
+  geom_point() +
+  theme_minimal() +
+  labs(x = "",
+       y = "",
+       title = "Total de casos", 
+       subtitle = "(r= -.21; p = .04)") + 
+  theme(legend.title = element_blank(), legend.position = "left")
+
+
 
 #AMAZONAS
 
 AMA <- BD %>% 
+  filter(ESTADO != "caso") %>% 
 ggplot(mapping = aes(x = epi_week, 
                      y = log(AMAZONAS), 
-                     colour = ESTADO_1)) + 
+                     colour = ESTADO)) + 
   geom_line() +
   geom_point() +
   theme_minimal() +
   labs(x = "",
        y = "",
        title = "AMAZONAS", 
-       subtitle = "(r= -.21; p = .04)") + 
+       subtitle = "(r= -.22; p = .02)") + 
   theme(legend.title = element_blank(), legend.position = "left")
 
 #ANCASH
 
 ANC <- BD %>% 
+  filter(ESTADO != "caso") %>%
   ggplot(mapping = aes(x = epi_week, 
                        y = log(ANCASH), 
-                       colour = ESTADO_2)) + 
+                       colour = ESTADO)) + 
   geom_line() +
   geom_point() +
   theme_minimal() +
   labs(x = "",
        y = "",
        title = "ANCASH", 
-       subtitle = "(r= -.32; p < .01)") + 
+       subtitle = "(r= -.36; p < .01)") + 
   theme(legend.position = "none")
 
 #APURIMAC
 
 APU <- BD %>% 
+  filter(ESTADO != "caso") %>%
   ggplot(mapping = aes(x = epi_week, 
                        y = log(APURIMAC), 
-                       colour = ESTADO_3)) + 
+                       colour = ESTADO)) + 
   geom_line() +
   geom_point() +
   theme_minimal() +
@@ -59,102 +75,109 @@ APU <- BD %>%
 
 #AREQUIPA
 
-ARE <- BD %>% 
+ARE <- BD %>%
+  filter(ESTADO != "caso") %>%
   ggplot(mapping = aes(x = epi_week, 
                        y = log(AREQUIPA), 
-                       colour = ESTADO_4)) + 
+                       colour = ESTADO)) + 
   geom_line() +
   geom_point() +
   theme_minimal() +
   labs(x = "",
        y = "",
        title = "AREQUIPA", 
-       subtitle = "(r = -.15; p = .12)") + 
+       subtitle = "(r = -.19; p = .05)") + 
   theme(legend.position = "none")
 
 #AYACUCHO
 
 AYA <- BD %>% 
+  filter(ESTADO != "caso") %>%
   ggplot(mapping = aes(x = epi_week, 
                        y = log(AYACUCHO),
-                       colour = ESTADO_5)) + 
+                       colour = ESTADO)) + 
   geom_line() +
   geom_point() +
   theme_minimal() +
   labs(x = "",
        y = "",
        title = "AYACUCHO", 
-       subtitle = "(r= -.12; p = .23)") + 
+       subtitle = "(r= -.14; p = .14)") + 
   theme(legend.position = "none")
 
 #CAJAMARCA
 
 CAJ <- BD %>% 
+  filter(ESTADO != "caso") %>%
   ggplot(mapping = aes(x = epi_week, 
                        y = log(CAJAMARCA),
-                       colour = ESTADO_6)) + 
+                       colour = ESTADO)) + 
   geom_line() +
   geom_point() +
   theme_minimal() +
   labs(x = "",
        y = "",
        title = "CAJAMARCA", 
-       subtitle = "(r = -.20; p = .04)") + 
+       subtitle = "(r = -.20; p = .03)") + 
   theme(legend.position = "none")
 
 #CALLAO 
 
 CAL <- BD %>% 
+  filter(ESTADO != "caso") %>%
   ggplot(mapping = aes(x = epi_week, 
                        y = log(CALLAO),
-                       colour = ESTADO_7)) + 
+                       colour = ESTADO)) + 
   geom_line() +
   geom_point() +
   theme_minimal() +
   labs(x = "",
        y = "",
        title = "CALLAO", 
-       subtitle = "(r = -.46; p < .01)") + 
+       subtitle = "(r = -.48; p < .01)") + 
   theme(legend.position = "none")
 
 
 #CUSCO 
 
 CUS <- BD %>% 
+  filter(ESTADO != "caso") %>%
   ggplot(mapping = aes(x = epi_week, 
                        y = log(CUSCO), 
-                       colour = ESTADO_8)) + 
+                       colour = ESTADO)) + 
   geom_line() +
   geom_point() +
   theme_minimal() +
   labs(x = "",
        y = "",
        title = "CUSCO", 
-       subtitle = "(r = .01; p = .96)") + 
+       subtitle = "(r = -.04; p = .67)") + 
   theme(legend.position = "none")
 
 #HUANCAVELICA
 
 HUA <- BD %>% 
+  filter(ESTADO != "caso") %>%
   ggplot(mapping = aes(x = epi_week,
                        y = log(HUANCAVELICA), 
-                       colour = ESTADO_9)) + 
+                       colour = ESTADO)) + 
   geom_line() +
   geom_point() +
   theme_minimal() +
   labs(x = "",
        y = "",
        title = "HUANCAVELICA", 
-       subtitle = "(r = -.07 ; p = .44)") + 
+       subtitle = "(r = -.08 ; p = .42)") + 
   theme(legend.position = "none")
 
 
 #HUANUCO
 
 HUAN <- BD %>% 
+  filter(ESTADO != "caso") %>%
   ggplot(mapping = aes(x = epi_week, 
                        y = log(HUANUCO), 
-                       colour = ESTADO_10)) + 
+                       colour = ESTADO)) + 
   geom_line() +
   geom_point() +
   theme_minimal() +
@@ -168,9 +191,10 @@ HUAN <- BD %>%
 #ICA
 
 ICA <- BD %>% 
+  filter(ESTADO != "caso") %>%
   ggplot(mapping = aes(x = epi_week, 
                        y = log(ICA), 
-                       colour = ESTADO_11)) + 
+                       colour = ESTADO)) + 
   geom_line() +
   geom_point() +
   theme_minimal() +
@@ -184,223 +208,237 @@ ICA <- BD %>%
 #JUNIN
 
 JUN <- BD %>% 
+  filter(ESTADO != "caso") %>%
   ggplot(mapping = aes(x = epi_week,
                        y = log(JUNIN),
-                       colour = ESTADO_12)) + 
+                       colour = ESTADO)) + 
   geom_line() +
   geom_point() +
   theme_minimal() +
   labs(x = "",
        y = "",
        title = "JUNIN", 
-       subtitle = "(r = -.20; p = .04)") + 
+       subtitle = "(r = -.21; p = .03)") + 
   theme(legend.position = "none")
 
 
 #LALIBERTAD
 
 LAL <- BD %>% 
+  filter(ESTADO != "caso") %>%
   ggplot(mapping = aes(x = epi_week, 
-                       y = log(LALIBERTAD), 
-                       colour = ESTADO_13)) + 
+                       y = log(LA.LIBERTAD), 
+                       colour = ESTADO)) + 
   geom_line() +
   geom_point() +
   theme_minimal() +
   labs(x = "",
        y = "",
        title = "LA LIBERTAD", 
-       subtitle = "(r = -.31; p < .01)") + 
+       subtitle = "(r = -.34; p < .01)") + 
   theme(legend.position = "none")
 
 #LAMBAYEQUE
 
 LAM <- BD %>% 
+  filter(ESTADO != "caso") %>%
   ggplot(mapping = aes(x = epi_week, 
                        y = log(LAMBAYEQUE),
-                       colour = ESTADO_14)) + 
+                       colour = ESTADO)) + 
   geom_line() +
   geom_point() +
   theme_minimal() +
   labs(x = "",
        y = "",
        title = "LAMBAYEQUE", 
-       subtitle = "(r = -.44; p < .01)") + 
+       subtitle = "(r = -.46; p < .01)") + 
   theme(legend.position = "none")
 
 
 #LIMA
 
 LIM <- BD %>% 
+  filter(ESTADO != "caso") %>%
   ggplot(mapping = aes(x = epi_week, 
                        y = log(LIMA),
-                       colour = ESTADO_15)) + 
+                       colour = ESTADO)) + 
   geom_line() +
   geom_point() +
   theme_minimal() +
   labs(x = "",
        y = "",
        title = "LIMA", 
-       subtitle = "(r = -.37; p < .01)") + 
+       subtitle = "(r = -.46; p < .01)") + 
   theme(legend.position = "none")
 
 
 #LORETO
 
 LOR <- BD %>% 
+  filter(ESTADO != "caso") %>%
   ggplot(mapping = aes(x = epi_week,
                        y = log(LORETO),
-                       colour = ESTADO_16)) + 
+                       colour = ESTADO)) + 
   geom_line() +
   geom_point() +
   theme_minimal() +
   labs(x = "",
        y = "",
        title = "LORETO", 
-       subtitle = "(r = -.41; p < .01)") + 
+       subtitle = "(r = -.43; p < .01)") + 
   theme(legend.position = "none")
 
 
 #MADREDEDIOS
 
 MAD <- BD %>% 
+  filter(ESTADO != "caso") %>%
   ggplot(mapping = aes(x = epi_week, 
-                       y = log(MADREDEDIOS),
-                       colour = ESTADO_17)) + 
+                       y = log(MADRE.DE.DIOS),
+                       colour = ESTADO)) + 
   geom_line() +
   geom_point() +
   theme_minimal() +
   labs(x = "",
        y = "",
        title = "MADRE DE DIOS", 
-       subtitle = "(r = -.30; p < .01)") + 
+       subtitle = "(r = -.29; p < .01)") + 
   theme(legend.position = "none")
 
 
 #MOQUEGUA
 
 MOQ <- BD %>% 
+  filter(ESTADO != "caso") %>%
   ggplot(mapping = aes(x = epi_week, 
                        y = log(MOQUEGUA),
-                       colour = ESTADO_18)) + 
+                       colour = ESTADO)) + 
   geom_line() +
   geom_point() +
   theme_minimal() +
   labs(x = "",
        y = "",
        title = "MOQUEGUA", 
-       subtitle = "(r = -.21; p = .03)") + 
+       subtitle = "(r = -.19; p = .05)") + 
   theme(legend.position = "none")
 
 
 #PASCO
 
 PAS <- BD %>%  
+  filter(ESTADO != "caso") %>%
   ggplot(mapping = aes(x = epi_week,
                        y = log(PASCO),
-                       colour = ESTADO_19)) + 
+                       colour = ESTADO)) + 
   geom_line() +
   geom_point() +
   theme_minimal() +
   labs(x = "",
        y = "",
        title = "PASCO", 
-       subtitle = "(r = -.19; p = .06)") + 
+       subtitle = "(r = -.18; p = .06)") + 
   theme(legend.position = "none")
 
 
 #PIURA
 
 PIU <- BD %>% 
+  filter(ESTADO != "caso") %>%
   ggplot(mapping = aes(x = epi_week, 
                        y = log(PIURA),
-                       colour = ESTADO_20)) + 
+                       colour = ESTADO)) + 
   geom_line() +
   geom_point() +
   theme_minimal() +
   labs(x = "",
        y = "",
        title = "PIURA", 
-       subtitle = "(r = -.40; p < .01)") + 
+       subtitle = "(r = -.43; p < .01)") + 
   theme(legend.position = "none")
 
 
 #PUNO
 
 PUN <- BD %>% 
+  filter(ESTADO != "caso") %>%
   ggplot(mapping = aes(x = epi_week,
                        y = log(PUNO),
-                       colour = ESTADO_21)) + 
+                       colour = ESTADO)) + 
   geom_line() +
   geom_point() +
   theme_minimal() +
   labs(x = "",
        y = "",
        title = "PUNO", 
-       subtitle = "(r = .03; p = .71)") + 
+       subtitle = "(r = .05; p = .60)") + 
   theme(legend.position = "none")
 
 
 #SANMARTIN
 
 SAN <- BD %>% 
+  filter(ESTADO != "caso") %>%
   ggplot(mapping = aes(x = epi_week,
-                       y = log(SANMARTIN),
-                       colour = ESTADO_22)) + 
+                       y = log(SAN.MARTIN),
+                       colour = ESTADO)) + 
   geom_line() + 
   geom_point() + 
   theme_minimal() +
   labs(x = "",
        y = "",
        title = "SAN MARTIN", 
-       subtitle = "(r = -.23; p = .02)") + 
+       subtitle = "(r = -.26; p < .01)") + 
   theme(legend.position = "none")
 
 
 #TACNA
 
 TAC <- BD %>% 
+  filter(ESTADO != "caso") %>%
   ggplot(mapping = aes(x = epi_week, 
                        y = log(TACNA),
-                       colour = ESTADO_23)) + 
+                       colour = ESTADO)) + 
   geom_line() +
   geom_point() +
   theme_minimal() +
   labs(x = "",
        y = "",
        title = "TACNA", 
-       subtitle = "(r = -.12; p = .23)") + 
+       subtitle = "(r = -.06; p = .50)") + 
   theme(legend.position = "none")
 
 
 #TUMBES
 
 TUM <- BD %>% 
+  filter(ESTADO != "caso") %>%
   ggplot(mapping = aes(x = epi_week,
                        y = log(TUMBES),
-                       colour = ESTADO_24)) + 
+                       colour = ESTADO)) + 
   geom_line() +
   geom_point() +
   theme_minimal() +
   labs(x = "",
        y = "",
        title = "TUMBES", 
-       subtitle = "(r = -.36;p < .01)") + 
+       subtitle = "(r = -.40;p < .01)") + 
   theme(legend.position = "none")
 
 
 #UCAYALI
 
 UCA <- BD %>% 
+  filter(ESTADO != "caso") %>%
   ggplot(mapping = aes(x = epi_week,
                        y = log(UCAYALI),
-                       colour = ESTADO_25)) + 
+                       colour = ESTADO)) + 
   geom_line() +
   geom_point() +
   theme_minimal() +
   labs(x = "",
        y = "",
        title = "UCAYALI", 
-       subtitle = "(r = -.43; p < .01)") + 
+       subtitle = "(r = -.44; p < .01)") + 
   theme(legend.position = "none")
 
 
@@ -408,7 +446,7 @@ UCA <- BD %>%
 ######################################################
 ################### CORRELACION ######################
 
-BD2 <- read_csv("DP1_vacunados_y_fallecidos_x_semanaEpi.csv")
+BD2 <- read_csv("DP1_covid19-peru_x_semanaEpi.csv")
 names(BD2)
 
 library(MVN)          # Análisis de normalidad multivariada
