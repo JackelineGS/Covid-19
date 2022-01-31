@@ -635,6 +635,49 @@ ggsave(filename = "regiones.png",
        scale = 1.5,
        dpi = 300)
 
+####################################################################
+############ SCATERPLOT DE VACUNADOS Y MORTALIDAD ##################
+####################################################################
+
+install.packages("ggrepel")
+
+library(tidyverse)
+library(gapminder)
+library(readxl)
+library(ggrepel)
+
+departamentos <- read_csv("DP2_covid19-peru_resumen_x_departamentos.csv")
+semana_BD <- read_excel("Semana_EPI.xlsx")
+names(semana_BD)
+
+sp <- ggplot(departamentos, aes(x= vac_porcentaje, 
+                                y= tasa_mortalidad,
+                                label = departamento)) + 
+  geom_point() + 
+  stat_smooth(method = lm) +
+  labs(x = "Porcentaje de vacunados (semana 3 - 2022)",
+       y = "Tasa de mortalidad") + 
+  geom_label_repel(fill = "white", xlim = c(-Inf, Inf), ylim = c(-Inf, Inf))
+
+
+ggsave(filename = "vacunados_mortalidad.png",
+       plot = sp,
+       height = 6,
+       width = 8,
+       scale = 1.5,
+       dpi = 300)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
