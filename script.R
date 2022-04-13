@@ -1,4 +1,3 @@
-
 library(tidyverse)
 library(gapminder)
 library(readxl)
@@ -6,8 +5,8 @@ library(readxl)
 BD <- read_excel("data.xlsx")
 names(BD)
 
-########################################################################
-###### GRÁFICO DE FALLECIDOS, VACUNADOS Y CASOS POR REGION #############
+0########################################################################
+##2.#### GR?FICO DE FALLECIDOS, VACUNADOS Y CASOS POR REGION #############
 ########################################################################
 
 BD %>% 
@@ -28,7 +27,6 @@ BD %>%
 #AMAZONAS
 
 AMA <- BD %>% 
-  filter(ESTADO != "caso") %>% 
 ggplot(mapping = aes(x = epi_week, 
                      y = log(AMAZONAS), 
                      colour = ESTADO)) + 
@@ -646,16 +644,18 @@ library(gapminder)
 library(readxl)
 library(ggrepel)
 
-departamentos <- read_csv("DP2_covid19-peru_resumen_x_departamentos.csv")
+departamentos <- read_csv("DP2_covid19-peru_resumen_x_departamentos_V1.csv")
 semana_BD <- read_excel("Semana_EPI.xlsx")
 names(semana_BD)
+
+departamentos <- 
 
 sp <- ggplot(departamentos, aes(x= vac_porcentaje, 
                                 y= tasa_mortalidad,
                                 label = departamento)) + 
   geom_point() + 
   stat_smooth(method = lm) +
-  labs(x = "Porcentaje de vacunados (semana 3 - 2022)",
+  labs(x = "Porcentaje de vacunados",
        y = "Tasa de mortalidad") + 
   geom_label_repel(fill = "white", xlim = c(-Inf, Inf), ylim = c(-Inf, Inf))
 
@@ -663,7 +663,7 @@ sp <- ggplot(departamentos, aes(x= vac_porcentaje,
 ggsave(filename = "vacunados_mortalidad.png",
        plot = sp,
        height = 6,
-       width = 8,
+       width = 12,
        scale = 1.5,
        dpi = 300)
 
