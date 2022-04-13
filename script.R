@@ -2,11 +2,11 @@ library(tidyverse)
 library(gapminder)
 library(readxl)
 
-BD <- read_excel("data.xlsx")
+BD <- read_excel("data_S62.xlsx")
 names(BD)
 
-0########################################################################
-##2.#### GR?FICO DE FALLECIDOS, VACUNADOS Y CASOS POR REGION #############
+########################################################################
+##2.#### GR?FICO DE FALLECIDOS Y VACUNADOS POR REGION #############
 ########################################################################
 
 BD %>% 
@@ -439,7 +439,60 @@ UCA <- BD %>%
        subtitle = "(r = -.44; p < .01)") + 
   theme(legend.position = "none")
 
+######################################################
+################ UNIR LOS GRAFICOS ###################
 
+library(patchwork)
+
+correlacion <- AMA + ANC + APU + ARE + AYA + CAJ + 
+  CAL + CUS + HUA + HUAN + ICA + JUN + 
+  LAL + LAM + LIM + LOR + MAD + MOQ +
+  PAS + PIU + PUN + SAN + TAC + TUM + 
+  UCA
+
+ggsave(filename = "regiones.png",
+       plot = correlacion,
+       height = 9,
+       width = 12,
+       scale = 1.5,
+       dpi = 300)
+
+correlacion
+
+####################################################################
+############ SCATERPLOT DE VACUNADOS Y MORTALIDAD ##################
+####################################################################
+
+install.packages("ggrepel")
+
+library(tidyverse)
+library(gapminder)
+library(readxl)
+library(ggrepel)
+
+departamentos <- read_csv("DP2_covid19-peru_resumen_x_departamentos_V2.csv")
+semana_BD <- read_excel("data_S62.xlsx")
+names(semana_BD)
+
+departamentos <- 
+  
+  sp <- ggplot(departamentos, aes(x= vac_porcentaje, 
+                                  y= tasa_mortalidad,
+                                  label = departamento)) + 
+  geom_point() + 
+  stat_smooth(method = lm) +
+  labs(x = "Porcentaje de vacunados",
+       y = "Tasa de mortalidad") + 
+  geom_label_repel(fill = "white", xlim = c(-Inf, Inf), ylim = c(-Inf, Inf))
+
+
+ggsave(filename = "vacunados_mortalidad.png",
+       plot = sp,
+       height = 6,
+       width = 12,
+       scale = 1.5,
+       dpi = 300)
+sp
 
 ######################################################
 ################### CORRELACION ######################
@@ -614,58 +667,6 @@ cor.test(BD2$UCAYALI_fal,
          BD2$UCAYALI_vac,
          method = "spearman")
 
-
-######################################################
-################ UNIR LOS GRAFICOS ###################
-
-library(patchwork)
-
-correlacion <- AMA + ANC + APU + ARE + AYA + CAJ + 
-               CAL + CUS + HUA + HUAN + ICA + JUN + 
-               LAL + LAM + LIM + LOR + MAD + MOQ +
-               PAS + PIU + PUN + SAN + TAC + TUM + 
-               UCA
-
-ggsave(filename = "regiones.png",
-       plot = correlacion,
-       height = 9,
-       width = 12,
-       scale = 1.5,
-       dpi = 300)
-
-####################################################################
-############ SCATERPLOT DE VACUNADOS Y MORTALIDAD ##################
-####################################################################
-
-install.packages("ggrepel")
-
-library(tidyverse)
-library(gapminder)
-library(readxl)
-library(ggrepel)
-
-departamentos <- read_csv("DP2_covid19-peru_resumen_x_departamentos_V1.csv")
-semana_BD <- read_excel("Semana_EPI.xlsx")
-names(semana_BD)
-
-departamentos <- 
-
-sp <- ggplot(departamentos, aes(x= vac_porcentaje, 
-                                y= tasa_mortalidad,
-                                label = departamento)) + 
-  geom_point() + 
-  stat_smooth(method = lm) +
-  labs(x = "Porcentaje de vacunados",
-       y = "Tasa de mortalidad") + 
-  geom_label_repel(fill = "white", xlim = c(-Inf, Inf), ylim = c(-Inf, Inf))
-
-
-ggsave(filename = "vacunados_mortalidad.png",
-       plot = sp,
-       height = 6,
-       width = 12,
-       scale = 1.5,
-       dpi = 300)
 
 
 
